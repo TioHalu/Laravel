@@ -20,3 +20,10 @@ Route::get('/', function () {
 Route::get('About',function(){
     return view('About');
 });
+
+Route::get('Debug',function(){
+    $dataarray = [
+        'message' => 'hello,world'
+    ];
+    ddd(request($dataarray));
+});
