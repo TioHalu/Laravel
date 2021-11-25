@@ -48,8 +48,16 @@ route::get('tasks/{params}', function($params) use($tasklist){
 
 route::get('tasks', function() use($tasklist){
     // ddd(request());
-    if (request()->search){
+    if (request()->search){//jika didalam request memilki nilai dari  keyword search
         return $tasklist[request() -> search];
     }
+    return $tasklist;
+});
+
+//menggunakan method post dan cara mendapatkan datanya akan mengaktifkan crsf protection app/middelcsrfprotect
+
+route::post('/tasks', function() use($tasklist){
+    // return request()->all();
+    $tasklist[request()->label]=request()->task;// seperti atribut name pada input
     return $tasklist;
 });
