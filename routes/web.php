@@ -61,3 +61,16 @@ route::post('/tasks', function() use($tasklist){
     $tasklist[request()->label]=request()->task;// seperti atribut name pada input
     return $tasklist;
 });
+
+//menggunakan method put dan patch dan mendapatkan data
+
+route::patch('tasks/{key}', function($key) use($tasklist){
+    $tasklist[$key] = request()->task;
+    return $tasklist;
+});
+
+//menggunakan method delete
+route::delete('tasks{key', function($key) use($tasklist){
+    unset($tasklist[$key]);
+    return $tasklist;
+});
