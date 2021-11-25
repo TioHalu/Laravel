@@ -34,10 +34,8 @@ Route::get('Debug',function(){
 // route::get('tasks', function() use($tasklist){
 //     return $tasklist;
 // });
-// //dengan parameter
-// route::get('tasks/{params}', function($params) use($tasklist){
-//     return $tasklist[$params];
-// });
+//dengan parameter
+route::get('tasks/{params}', [TaskController::class,'show']);
 
 //mendapatkan data dari query string pada method get
 
