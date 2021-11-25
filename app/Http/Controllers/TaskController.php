@@ -23,4 +23,23 @@ class TaskController extends Controller
     public function show($params){
         return $this->tasklist[$params];
     }
+    //method post 
+    public function store(){
+         // return request()->all();
+        $this->tasklist[request()->label]=request()->task;// seperti atribut name pada input
+        return $this->tasklist;
+    }
+
+    //method patch
+    public function update($key){
+        $this->tasklist[$key] = request()->task;
+        return $this->tasklist;
+    }
+
+    //Method delete
+
+    public function destroy($key){
+        unset($this->tasklist[$key]);
+        return $$this->tasklist;
+    }
 }

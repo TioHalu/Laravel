@@ -43,21 +43,11 @@ route::get('tasks', [TaskController::class,'index']);
 
 //menggunakan method post dan cara mendapatkan datanya akan mengaktifkan crsf protection app/middelcsrfprotect
 
-// route::post('/tasks', function() use($tasklist){
-//     // return request()->all();
-//     $tasklist[request()->label]=request()->task;// seperti atribut name pada input
-//     return $tasklist;
-// });
+route::post('/tasks', [TaskController::class, 'store']);
 
 // //menggunakan method put dan patch dan mendapatkan data
 
-// route::patch('tasks/{key}', function($key) use($tasklist){
-//     $tasklist[$key] = request()->task;
-//     return $tasklist;
-// });
+route::patch('tasks/{key}', [TaskController::class, 'update']);
 
-// //menggunakan method delete
-// route::delete('tasks{key', function($key) use($tasklist){
-//     unset($tasklist[$key]);
-//     return $tasklist;
-// });
+//menggunakan method delete
+route::delete('tasks{key', [TaskController::class,'destroy']);
