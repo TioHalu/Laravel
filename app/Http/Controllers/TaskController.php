@@ -13,9 +13,9 @@ class TaskController extends Controller
     'third' => 'work'
     ];
 
-    public function index(){
-        if (request()->search){//jika didalam request memilki nilai dari  keyword search
-        return $this->tasklist[request() -> search];
+    public function index(Request $request){
+        if ($request->search){//jika didalam request memilki nilai dari  keyword search
+        return $this->tasklist[$request -> search];
     }
     return $this->tasklist;
     }
@@ -24,15 +24,15 @@ class TaskController extends Controller
         return $this->tasklist[$params];
     }
     //method post 
-    public function store(){
+    public function store(Request $request){
          // return request()->all();
-        $this->tasklist[request()->label]=request()->task;// seperti atribut name pada input
+        $this->tasklist[$request->label]=$request->task;// seperti atribut name pada input
         return $this->tasklist;
     }
 
     //method patch
-    public function update($key){
-        $this->tasklist[$key] = request()->task;
+    public function update(Request $request,$key){
+        $this->tasklist[$key] = $request->task;
         return $this->tasklist;
     }
 
