@@ -13,20 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('About',function(){
-//     return view('About');
-// });
+Route::get('About',function(){
+    return view('About');
+});
 
-// Route::get('Debug',function(){
-//     $dataarray = [
-//         'message' => 'hello,world'
-//     ];
-//     ddd(request($dataarray));
-// });
+Route::get('Debug',function(){
+    $dataarray = [
+        'message' => 'hello,world'
+    ];
+    ddd(request($dataarray));
+});
 
 
 //menggunakan method get dan parameter route
@@ -42,4 +42,14 @@ route::get('tasks', function() use($tasklist){
 //dengan parameter
 route::get('tasks/{params}', function($params) use($tasklist){
     return $tasklist[$params];
+});
+
+//mendapatkan data dari query string pada method get
+
+route::get('tasks', function() use($tasklist){
+    // ddd(request());
+    if (request()->search){
+        return $tasklist[request() -> search];
+    }
+    return $tasklist;
 });
