@@ -45,9 +45,9 @@ route::get('tasks', [TaskController::class,'index']);
 
 route::post('/tasks', [TaskController::class, 'store']);
 
-// //menggunakan method put dan patch dan mendapatkan data
+// //menggunakan method put dan patch dan mendapatkan data update
 
-route::patch('tasks/{key}', [TaskController::class, 'update']);
+route::patch('tasks/{id}', [TaskController::class, 'update']);
 
 //menggunakan method delete
 route::delete('tasks{key}', [TaskController::class,'destroy']);

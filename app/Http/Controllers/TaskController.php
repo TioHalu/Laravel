@@ -42,9 +42,12 @@ class TaskController extends Controller
     }
 
     //method patch
-    public function update(Request $request,$key){
-        $this->tasklist[$key] = $request->task;
-        return $this->tasklist;
+    public function update(Request $request,$id){
+       $task = DB::table('task')->where('id',$id)->update([//mengubah data dengan query builder
+           'task'=>$request->task,
+           'user'=>$request->user
+       ]);
+       return 'success';
     }
 
     //Method delete
