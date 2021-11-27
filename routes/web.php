@@ -17,6 +17,12 @@ use App\Http\Controllers\TaskController;
 
 Route::get('/', [Homecontroller::class,'index']);
 
+//membuat halaman task dan edit task 
+route::get('tasks/create', [TaskController::class, 'create']);
+route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
+
+
+
 Route::get('About',function(){
     return view('About');
 });
@@ -51,3 +57,6 @@ route::patch('tasks/{id}', [TaskController::class, 'update']);
 
 //menggunakan method delete
 route::delete('tasks/{id}', [TaskController::class,'destroy']);
+
+
+

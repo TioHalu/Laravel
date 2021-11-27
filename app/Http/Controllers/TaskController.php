@@ -29,6 +29,18 @@ class TaskController extends Controller
         return $tasks;
     }
 
+       //Membuat Halaman Create 
+    public function create(){
+        return view('tasks.create');//folder dengan nama task dan dile create.blade.php
+    }
+    //membuat halaman edit
+    public function edit($id){
+        return view('tasks.edit');
+    }
+
+
+
+
     public function show($id){
         $task=Task::find($id);//mendapatkan menampilkan data dengan id dengan model mvc
         return $task;
@@ -60,4 +72,11 @@ class TaskController extends Controller
       
         return 'success';//menghapus data pada dengan model mvc
     }
+
+
+
+ 
 }
+
+
+
