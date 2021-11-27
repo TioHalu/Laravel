@@ -50,6 +50,11 @@ class TaskController extends Controller
     }
     //method post 
     public function store(Request $request){
+        // membuat agar memvalidasi form jika diisikan kosong agar tidak eror
+        $request->validate([
+            'task' =>['required'],
+            'user'=>['required']
+        ]);
     Task::create([
         'task'=> $request->task,//menambahkan data dari request milih task dan user dengan model mvc
         'user'=>$request->user
