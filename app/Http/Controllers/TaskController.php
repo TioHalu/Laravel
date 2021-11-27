@@ -37,7 +37,8 @@ class TaskController extends Controller
     }
     //membuat halaman edit
     public function edit($id){
-        return view('tasks.edit');
+        $task=Task::find($id);
+        return view('tasks.edit', compact('task'));//class compact untuk mengambil data pada variable $task 
     }
 
 
@@ -63,7 +64,7 @@ class TaskController extends Controller
            'task'=>$request->task,
            'user'=>$request->user
        ]);
-       return $task;
+       return redirect('/tasks');//membrikan rediredt halaman ketika di submit akan pergi ke /tasks kembali
     }
 
     //Method delete
