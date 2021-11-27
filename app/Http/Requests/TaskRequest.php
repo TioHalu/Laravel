@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TaskRequest extends FormRequest
 {
@@ -22,9 +24,13 @@ class TaskRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {//mengatasi validasi data unik
+        $rule_task_unique = Rule::unique('tasks','task');
+        if($this->method()!== 'POST'){
+            $rule_task_unique->ignore($this->route()->parameter('id'));
+        }
         return [
-            'task' =>['required'],
+            'task' =>['required', $rule_task_unique],//menambahkan unique tasks agar tidak ada inputan yang sama
             'user'=>['required']
         ];
     }
