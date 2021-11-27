@@ -12,4 +12,5 @@ class Task extends Model
     // protected $table = 'namatable'//jika kita menggunakan model ini dengan table berbeda
 //     protected $filable = [] ;//menemtukan fill apa saja yang akan kita isikan
 //     protected $guerded = [];//menentukan agar nilai tidak di isi sembarangan
+        protected $guarded = [];
 }
