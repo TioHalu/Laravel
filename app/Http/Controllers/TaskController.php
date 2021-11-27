@@ -26,7 +26,9 @@ class TaskController extends Controller
         }
 
         $tasks = Task::all();
-        return $tasks;
+        return view('tasks.index',[
+            'data'=> $tasks //menampilkan data pada foldes tasks.index disimpan dalam array dengan tiap index dengan nama variable'data'
+        ]);
     }
 
        //Membuat Halaman Create 
