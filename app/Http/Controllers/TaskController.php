@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function GuzzleHttp\Promise\task;
+use function PHPUnit\Framework\returnSelf;
+
 class TaskController extends Controller
 {
     private $tasklist = [
@@ -14,14 +17,20 @@ class TaskController extends Controller
     ];
 
     public function index(Request $request){
-        if ($request->search){//jika didalam request memilki nilai dari  keyword search
-        return $this->tasklist[$request -> search];
-    }
-    return $this->tasklist;
+        if($request->search){
+         $tasks = DB::table('task')
+         ->where('task','LIKE',"%$request->search%")//mencari dengna kata kunci di seluruh data tabel task dengn operator LIKE sesuar kata kunci 
+         ->get();
+         return $tasks;
+        }
+    
+        $tasks = DB::table('task')->get();//menampilkan data
+        return $tasks;
     }
 
-    public function show($params){
-        return $this->tasklist[$params];
+    public function show($id){
+        $task = DB::table('task')->where('id',$id)->first();//mendapatkan menampilkan data dengan id
+        ddd($task);//menampilkan data dengan dump,die,debug
     }
     //method post 
     public function store(Request $request){

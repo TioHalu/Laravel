@@ -35,7 +35,7 @@ Route::get('Debug',function(){
 //     return $tasklist;
 // });
 //dengan parameter
-route::get('tasks/{params}', [TaskController::class,'show']);
+route::get('tasks/{id}', [TaskController::class,'show']);
 
 //mendapatkan data dari query string pada method get
 
@@ -50,4 +50,4 @@ route::post('/tasks', [TaskController::class, 'store']);
 route::patch('tasks/{key}', [TaskController::class, 'update']);
 
 //menggunakan method delete
-route::delete('tasks{key', [TaskController::class,'destroy']);
+route::delete('tasks{key}', [TaskController::class,'destroy']);
