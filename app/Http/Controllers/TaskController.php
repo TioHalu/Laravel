@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,24 +19,24 @@ class TaskController extends Controller
 
     public function index(Request $request){
         if($request->search){
-         $tasks = DB::table('task')
-         ->where('task','LIKE',"%$request->search%")//mencari dengna kata kunci di seluruh data tabel task dengn operator LIKE sesuar kata kunci 
+         $tasks = Task::where('task','LIKE',"%$request->search%")//mencari dengna kata kunci di seluruh data colum task dengn operator LIKE sesuar kata kunci "search=key" dengan model mvc
          ->get();
+        
          return $tasks;
         }
-    
-        $tasks = DB::table('task')->get();//menampilkan data
+
+        $tasks = Task::all();
         return $tasks;
     }
 
     public function show($id){
-        $task = DB::table('task')->where('id',$id)->first();//mendapatkan menampilkan data dengan id
-        ddd($task);//menampilkan data dengan dump,die,debug
+        $task=Task::find($id);//mendapatkan menampilkan data dengan id dengan model mvc
+        return $task;
     }
     //method post 
     public function store(Request $request){
-       DB::table('task')->insert([
-        'task'=> $request->task,//mendapatkan data dari request milih task dan user
+    Task::create([
+        'task'=> $request->task,//menambahkan data dari request milih task dan user dengan model mvc
         'user'=>$request->user
        ]);
        return 'success';
@@ -43,19 +44,20 @@ class TaskController extends Controller
 
     //method patch
     public function update(Request $request,$id){
-       $task = DB::table('task')->where('id',$id)->update([//mengubah data dengan query builder
+       $task = Task::find($id);
+       $task->update([//mengubah data dengan model mvc
            'task'=>$request->task,
            'user'=>$request->user
        ]);
-       return 'success';
+       return $task;
     }
 
     //Method delete
 
     public function destroy($id){
-       DB::table('task')
-        ->where('id',$id)
-        ->delete();
-       return 'success';//menghapus data pada dengan query builder
+      $task = Task::find($id);
+      $task->delete();
+      
+        return 'success';//menghapus data pada dengan model mvc
     }
 }
