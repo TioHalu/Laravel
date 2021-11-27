@@ -28,4 +28,12 @@ class TaskRequest extends FormRequest
             'user'=>['required']
         ];
     }
+//function mengubah validasi pesan dan mengembalikan nilai input terakhir
+    public function messages(){
+        return[
+        'required'=>'isian :attribute harus di isi',
+        'user.required'=>'nama pengguna harus di isi'//khusukan untuk name user
+        ];
+      
+    }
 }

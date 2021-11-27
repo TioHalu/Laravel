@@ -12,7 +12,8 @@
             @method('PATCH')
                 <div class="mb-3">
                     <label for="" class="form-label">User</label>
-                    <input name="user" type="text" class="form-control" value="{{ $task->user }}">
+                    <!-- menambahkan value dari input old agar inputan terkahir tidak hilang -->
+                    <input name="user" type="text" class="form-control" value="{{ old('user', $task->user) }}">
                     <!-- menambahkan error dibawah textinput jika inputan kosong -->
                     @error('user')
                     <span class="text-danger">
@@ -22,7 +23,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Task</label>
-                    <textarea name="task" class="form-control" id="" rows="3" >{{ $task->task }}</textarea>
+                    <!-- menambahkan value dari input old agar inputan terkahir tidak hilang -->
+                    <textarea name="task" class="form-control" id="" rows="3" >{{ old('task',$task->task)}}</textarea>
                     <!-- menambahkan error dibawah textinput jika inputan kosong -->
                      @error('task')
                     <span class="text-danger">

@@ -10,7 +10,8 @@
                 @csrf 
                 <div class="mb-3">
                     <label for="" class="form-label">User</label>
-                    <input name="user" type="text" class="form-control">
+                    <!-- menambahkan value dari input old agar inputan terkahir tidak hilang -->
+                    <input name="user" type="text" class="form-control" value="{{ old('user')}}">
                     <!-- menambahkan error dibawah textinput jika inputan kosong -->
                      @error('user')
                     <span class="text-danger">
@@ -20,7 +21,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Task</label>
-                    <textarea name="task" class="form-control" id="" rows="3"></textarea>
+                    <!-- menambahkan value dari input old agar inputan terkahir tidak hilang -->
+                    <textarea name="task" class="form-control" id="" rows="3">{{ old('task')}}</textarea>
                     <!-- menambahkan error dibawah textinput jika inputan kosong -->
                      @error('task')
                     <span class="text-danger">
