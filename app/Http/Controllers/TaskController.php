@@ -20,12 +20,12 @@ class TaskController extends Controller
     public function index(Request $request){
         if($request->search){
          $tasks = Task::where('task','LIKE',"%$request->search%")//mencari dengna kata kunci di seluruh data colum task dengn operator LIKE sesuar kata kunci "search=key" dengan model mvc
-         ->get();
+         ->paginate(3);
         
          return $tasks;
         }
 
-        $tasks = Task::all();
+        $tasks = Task::paginate(3);//paginate class laravel untuk next halaman
         return view('tasks.index',[
             'data'=> $tasks //menampilkan data pada foldes tasks.index disimpan dalam array dengan tiap index dengan nama variable'data'
         ]);

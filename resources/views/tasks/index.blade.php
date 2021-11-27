@@ -3,9 +3,10 @@
  @section('main')
  
 
- <div class="border rounded mt-5 mx-auto d-flex flex-column align-items-stretch bg-white" style="width: 380px;">
+ <div class="border rounded my-5 mx-auto d-flex flex-column align-items-stretch bg-white" style="width: 380px;">
         <div class="d-flex justify-content-between flex-shrink-0 p-3 link-dark  border-bottom">
-            <span class="fs-5 fw-semibold">Task Lists</span>
+            <!-- class dari pagination total() untuk memanggil total dari data sebelumnya -->
+            <span class="fs-5 fw-semibold">Task Lists:{{$data->total()}}</span>
             <span class="btn btn-sm btn-primary">add</span>
         </div>
         <!-- melakukan perulangan dengan array variable data  yang ada pada taskcontroller  -->
@@ -25,6 +26,9 @@
             </div>
         </div>
         @endforeach
+        <br>
+        {{$data->links('pagination::bootstrap-4')}}
+        <!-- jika ingin melihat tampilan dari pagination dari bootsrap "php artisan vendor:publish --tag=laravel-pagination -->
 
     </div>
  @endsection
