@@ -73,7 +73,7 @@ class TaskController extends Controller
       $task = Task::find($id);
       $task->delete();
       
-        return 'success';//menghapus data pada dengan model mvc
+        return redirect('/tasks');//menghapus data pada dengan model mvc
     }
 
 
