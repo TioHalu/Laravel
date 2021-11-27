@@ -12,6 +12,11 @@ use function PHPUnit\Framework\returnSelf;
 
 class TaskController extends Controller
 {
+    //agar semua method harus perlu login baru bisa mengakses
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     private $tasklist = [
     'first' => 'sleep',
     'second' => 'eat',
@@ -19,6 +24,7 @@ class TaskController extends Controller
     ];
 
     public function index(Request $request){
+    
         if($request->search){
          $tasks = Task::where('task','LIKE',"%$request->search%")//mencari dengna kata kunci di seluruh data colum task dengn operator LIKE sesuar kata kunci "search=key" dengan model mvc
          ->paginate(3);

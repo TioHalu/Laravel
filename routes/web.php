@@ -45,7 +45,7 @@ route::get('tasks/{id}', [TaskController::class,'show']);
 
 //mendapatkan data dari query string pada method get
 
-route::get('/tasks', [TaskController::class,'index'])->middleware('is_admin');
+route::get('/tasks', [TaskController::class,'index']);//->middleware('auth') jika ingin satu taskcontroller saja
 
 //menggunakan method post dan cara mendapatkan datanya akan mengaktifkan crsf protection app/middelcsrfprotect
 
