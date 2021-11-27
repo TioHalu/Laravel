@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -49,12 +50,9 @@ class TaskController extends Controller
         return $task;
     }
     //method post 
-    public function store(Request $request){
-        // membuat agar memvalidasi form jika diisikan kosong agar tidak eror
-        $request->validate([
-            'task' =>['required'],
-            'user'=>['required']
-        ]);
+    public function store(TaskRequest $request){
+        // membuat agar memvalidasi form jika diisikan kosong agar tidak eror dengan class TaskRequest php artisan make:request TaskRequest
+      
     Task::create([
         'task'=> $request->task,//menambahkan data dari request milih task dan user dengan model mvc
         'user'=>$request->user
@@ -63,7 +61,9 @@ class TaskController extends Controller
     }
 
     //method patch
-    public function update(Request $request,$id){
+    // membuat agar memvalidasi form jika diisikan kosong agar tidak eror dengan class TaskRequest php artisan make:request TaskRequest
+    public function update(TaskRequest $request,$id){
+     
        $task = Task::find($id);
        $task->update([//mengubah data dengan model mvc
            'task'=>$request->task,
