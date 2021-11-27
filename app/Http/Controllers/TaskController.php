@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -25,9 +25,11 @@ class TaskController extends Controller
     }
     //method post 
     public function store(Request $request){
-         // return request()->all();
-        $this->tasklist[$request->label]=$request->task;// seperti atribut name pada input
-        return $this->tasklist;
+       DB::table('task')->insert([
+        'task'=> $request->task,//mendapatkan data dari request milih task dan user
+        'user'=>$request->user
+       ]);
+       return 'success';
     }
 
     //method patch
