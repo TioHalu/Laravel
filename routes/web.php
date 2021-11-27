@@ -50,4 +50,4 @@ route::post('/tasks', [TaskController::class, 'store']);
 route::patch('tasks/{id}', [TaskController::class, 'update']);
 
 //menggunakan method delete
-route::delete('tasks{key}', [TaskController::class,'destroy']);
+route::delete('tasks/{id}', [TaskController::class,'destroy']);

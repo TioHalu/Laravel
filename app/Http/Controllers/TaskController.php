@@ -52,8 +52,10 @@ class TaskController extends Controller
 
     //Method delete
 
-    public function destroy($key){
-        unset($this->tasklist[$key]);
-        return $$this->tasklist;
+    public function destroy($id){
+       DB::table('task')
+        ->where('id',$id)
+        ->delete();
+       return 'success';//menghapus data pada dengan query builder
     }
 }
