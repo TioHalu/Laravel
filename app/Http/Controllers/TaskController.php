@@ -53,7 +53,7 @@ class TaskController extends Controller
         'task'=> $request->task,//menambahkan data dari request milih task dan user dengan model mvc
         'user'=>$request->user
        ]);
-       return 'success';
+       return redirect(url('/tasks'));//membrikan rediredt halaman ketika di submit akan pergi ke /tasks kembali
     }
 
     //method patch

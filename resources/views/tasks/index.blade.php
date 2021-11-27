@@ -1,5 +1,5 @@
- @extends('layouts.App')
- 
+ @extends("layouts.App")
+
  @section('main')
  
 
@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between flex-shrink-0 p-3 link-dark  border-bottom">
             <!-- class dari pagination total() untuk memanggil total dari data sebelumnya -->
             <span class="fs-5 fw-semibold">Task Lists:{{$data->total()}}</span>
-            <span class="btn btn-sm btn-primary">add</span>
+            <a href="{{url('tasks/create')}}" class="btn btn-sm btn-primary">add</a>
         </div>
         <!-- melakukan perulangan dengan array variable data  yang ada pada taskcontroller  -->
         @foreach($data as $item)
@@ -27,7 +27,7 @@
         </div>
         @endforeach
         <br>
-        {{$data->links('pagination::bootstrap-4')}}
+        {{$data->links("pagination::bootstrap-4")}}
         <!-- jika ingin melihat tampilan dari pagination dari bootsrap "php artisan vendor:publish --tag=laravel-pagination -->
 
     </div>

@@ -3,14 +3,17 @@
 <div class="mt-5 mx-auto" style="width: 380px">
     <div class="card">
         <div class="card-body">
-            <form action="#">
+            <!-- action untuk mengirimkan pada halaman task dengan method post -->
+            <form action="{{url('/tasks')}}" method="POST">
+                <!-- csrf untuk mengamankan data yang dikirimkan -->
+                @csrf 
                 <div class="mb-3">
                     <label for="" class="form-label">User</label>
-                    <input type="text" class="form-control">
+                    <input name="user" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Task</label>
-                    <textarea class="form-control" id="" rows="3"></textarea>
+                    <textarea name="task" class="form-control" id="" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
